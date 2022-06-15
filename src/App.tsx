@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './img/logo.png';
 import './App.css';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
         <div className="shrink-0">
-          <img className="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo">
+          <img className="h-12 w-12" src="/img/logo.png" alt="ChitChat Logo"/>
         </div>
         <div>
           <div className="text-xl font-medium text-black">ChitChat</div>
