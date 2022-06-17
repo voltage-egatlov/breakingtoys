@@ -1,0 +1,5 @@
+cypress/fixtures/*
+**/*.json
+**/*.scss
+**/*.css
+**/*.yml

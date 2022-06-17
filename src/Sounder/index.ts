@@ -1,1 +1,1 @@
-export { default as Sounder } from "./Sounder"
+export { default } from "./Sounder"
