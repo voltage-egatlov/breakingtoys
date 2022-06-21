@@ -5,7 +5,7 @@ export type Note = {
   noteLength: "Whole" | "Half" | "Quarter" | "Eighth"
 }
 
-export const get = (thisNote: Note): string => {
+export const getNote = (thisNote: Note): string => {
   return thisNote.noteLetter + thisNote.noteAccidental + thisNote.noteOctave
 }
 
