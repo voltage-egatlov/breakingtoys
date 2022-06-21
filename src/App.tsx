@@ -1,18 +1,23 @@
-import React from 'react';
-import logo from './img/logo.png';
-import './App.css';
+import React, { useState } from "react"
+
+import "./App.css"
+import Sounder from "./Sounder"
+import IntroScreen from "./IntroScreen"
 
 function App() {
-  return (
+  const [makingMusic, setMakingMusic] = useState(false)
 
+  return (
     <div className="App">
       <header className="App-header">
-        <button>
-          <img src={logo} className="App-logo" alt="logo" />
-        </button>
+        {makingMusic ? (
+          <Sounder />
+        ) : (
+          <IntroScreen setMakingMusic={setMakingMusic} />
+        )}
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
