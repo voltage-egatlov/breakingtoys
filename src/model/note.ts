@@ -5,10 +5,10 @@ export type Note = {
   noteLength: "Whole" | "Half" | "Quarter" | "Eighth"
 }
 
-export const getNote = (thisNote: Note): string => {
+export const get = (thisNote: Note): string => {
   return thisNote.noteLetter + thisNote.noteAccidental + thisNote.noteOctave
 }
 
-export const initNote = (noteArr: Note[]): Note => {
+export const first = (noteArr: Note[]): Note => {
   return noteArr[0]
 }
