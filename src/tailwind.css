@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .key-wh{
+        @apply box-border h-28 w-32 p-4 border-4 bg-green-500 m4
+    }
+}
