@@ -23,7 +23,7 @@ const Sounder: FC = () => {
     const randomInteger = Math.floor(Math.random() * availableNotes.length)
     const randomNote: Note.Note = availableNotes[randomInteger]
     Synth.triggerNote(randomNote)
-    Synth.stopNote(determineLength(length))
+    Synth.releaseNote(determineLength(length))
     startTransition(() => {
       setCurrentNote(randomNote)
     })

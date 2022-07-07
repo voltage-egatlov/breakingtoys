@@ -14,7 +14,7 @@ const IntroScreen: FC<IntroScreenProps> = ({ setMakingMusic }) => {
   return (
     <div>
       <button onClick={handleOnClickStart}>
-        <MusicNoteIcon className="App-logo animate-spin-stopping text-sky-800" />
+        <MusicNoteIcon className="App-spinner animate-spin-stopping text-sky-800" />
       </button>
       <h1 className="text-yellow-500">No Sound Is Being Generated</h1>
     </div>

@@ -1,47 +1,27 @@
-import * as Tone from "tone"
-import { FC, useState, startTransition } from "react"
-
-import { VolumeUpIcon } from "@heroicons/react/outline"
-import { Switch } from "@headlessui/react"
-
-import * as Note from "../model/note"
+import { FC } from "react"
 import * as Scale from "../model/scales"
-import * as Synth from "../model/synth"
-
 import Key from "./Keys"
 
 const Keyboard: FC = () => {
-    const makeKey = (
-        color: string,
-
-    ) => {
-
-    }
+    const currentScale=Scale.getScale("A", "major")
     return (
-        <div className="flex flex-row justify-center h-1/2 w-3/4">
-            <div className="flex flex-col justify-center basis-3/7">
-                <div id="blackKeysLeft" className="key-container justify-evenly">
-                    <Key color="black"></Key>
-                    <Key color="black"></Key>
-                </div>
-                <div id="whiteKeysLeft" className="key-container justify-between min-w-full">
-                    <Key color="white"></Key>
-                    <Key color="white"></Key>
-                    <Key color="white"></Key>
-                </div>
+        <div className="flex flex-col justify-center w-3/4">
+            <div id="blackKeysLeft" className="key-container w-7/8">
+                <Key color="black" note={currentScale[1]}></Key>
+                <Key color="black" note={currentScale[3]}></Key>
+                <div className="key-empty"></div>
+                <Key color="black" note={currentScale[6]}></Key>
+                <Key color="black" note={currentScale[8]}></Key>
+                <Key color="black" note={currentScale[10]}></Key>
             </div>
-            <div className="flex flex-col justify-center basis-4/7">
-                <div id="blackKeysRight" className="key-container justify-evenly">
-                    <Key color="black"></Key>
-                    <Key color="black"></Key>
-                    <Key color="black"></Key>
-                </div>
-                <div id="whiteKeysRight" className="key-container justify-evenly">
-                    <Key color="white"></Key>
-                    <Key color="white"></Key>
-                    <Key color="white"></Key>
-                    <Key color="white"></Key>
-                </div>
+            <div id="whiteKeysLeft" className="key-container w-full">
+                <Key color="white" note={currentScale[0]}></Key>
+                <Key color="white" note={currentScale[2]}></Key>
+                <Key color="white" note={currentScale[4]}></Key>
+                <Key color="white" note={currentScale[5]}></Key>
+                <Key color="white" note={currentScale[7]}></Key>
+                <Key color="white" note={currentScale[9]}></Key>
+                <Key color="white" note={currentScale[11]}></Key>
             </div>
         </div>
     )
