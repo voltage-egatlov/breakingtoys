@@ -1,7 +1,6 @@
-import React, { useState } from "react"
+import { useState } from "react"
 
-import "./App.css"
-import Sounder from "./Sounder"
+import Keyboard from "./Keyboard"
 import IntroScreen from "./IntroScreen"
 
 function App() {
@@ -11,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {makingMusic ? (
-          <Sounder />
+          <Keyboard />
         ) : (
           <IntroScreen setMakingMusic={setMakingMusic} />
         )}

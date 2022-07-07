@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .App{
+    @apply text-center
+  }
+  .App-header{
+    @apply bg-blue-500 min-h-screen flex flex-col items-center justify-center text-purple-200
+  }
+  .App-spinner{
+    @apply h-40
+  }
+  .key-wh {
+    @apply box-border h-60 w-32 p-4 border-4 bg-white rounded-full shadow-key transition hover:shadow-key-hover hover:translate-x-2 hover:translate-y-2
+  }
+
+  .key-bl {
+    @apply box-border h-52 w-28 p-4 border-4 bg-gray-600 rounded-full shadow-key transition hover:shadow-key-hover hover:translate-x-2 hover:translate-y-2
+  }
+
+  .key-empty {
+    @apply box-border h-52 w-28 p-4 bg-transparent rounded-full
+  }
+
+  .key-container {
+    @apply flex flex-row self-center justify-evenly
+  }
+}

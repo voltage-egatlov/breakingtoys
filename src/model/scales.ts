@@ -51,6 +51,12 @@ chromaticScale.push({
   noteLength: "Whole",
 })
 chromaticScale.push({
+  noteLetter: "G",
+  noteAccidental: "#",
+  noteOctave: "4",
+  noteLength: "Whole",
+})
+chromaticScale.push({
   noteLetter: "A",
   noteAccidental: "",
   noteOctave: "4",

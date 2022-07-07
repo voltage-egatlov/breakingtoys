@@ -6,8 +6,7 @@ import { Switch } from "@headlessui/react"
 
 import * as Note from "../model/note"
 import * as Scale from "../model/scales"
-
-const synth = new Tone.Synth().toDestination()
+import * as Synth from "../model/synth"
 
 const Sounder: FC = () => {
   const availableNotes: Note.Note[] = Scale.getScale("A", "major")
@@ -23,8 +22,8 @@ const Sounder: FC = () => {
   const handleSound = (): void => {
     const randomInteger = Math.floor(Math.random() * availableNotes.length)
     const randomNote: Note.Note = availableNotes[randomInteger]
-    //handleNote()
-    synth.triggerAttackRelease(Note.getNote(randomNote), determineLength(length))
+    Synth.triggerNote(randomNote)
+    Synth.releaseNote(determineLength(length))
     startTransition(() => {
       setCurrentNote(randomNote)
     })
@@ -32,9 +31,9 @@ const Sounder: FC = () => {
 
   const determineLength = (isLong: boolean): string => {
     if (!isLong) {
-      return "50n"
+      return "0.2"
     } else {
-      return "8n"
+      return "2"
     }
   }
 
