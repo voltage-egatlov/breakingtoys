@@ -7,24 +7,47 @@
     @apply text-center
   }
   .App-header{
-    @apply bg-blue-500 min-h-screen flex flex-col items-center justify-center text-purple-200
+    @apply bg-back-blue h-screen w-screen flex flex-col justify-center text-purple-200
   }
   .App-spinner{
     @apply h-40
   }
   .key-wh {
-    @apply box-border h-60 w-32 p-4 border-4 bg-white rounded-full shadow-key transition hover:shadow-key-hover hover:translate-x-2 hover:translate-y-2
+    @apply box-border border-2 bg-white rounded-full flex key-shadow-small min-w-[40px] grow 
   }
 
   .key-bl {
-    @apply box-border h-52 w-28 p-4 border-4 bg-gray-600 rounded-full shadow-key transition hover:shadow-key-hover hover:translate-x-2 hover:translate-y-2
+    @apply box-border border-2 bg-gray-600 rounded-full flex key-shadow-small min-w-[40px] grow
   }
 
+  .key-border{
+    @apply box-border flex border-8 bg-transparent rounded-full translate-y-1 translate-x-1
+  }
+  
   .key-empty {
-    @apply box-border h-52 w-28 p-4 bg-transparent rounded-full
+    @apply box-border bg-transparent flex rounded-full min-w-[40px] grow
   }
 
+  .key-shadow-large{
+    @apply shadow-key transition hover:shadow-key-hover hover:translate-x-2 hover:translate-y-2
+  }
+
+  .key-shadow-small{
+    @apply shadow-key-small transition hover:shadow-key-hover-small hover:translate-x-1 hover:translate-y-1
+  }
   .key-container {
-    @apply flex flex-row self-center justify-evenly
+    @apply flex flex-row self-center justify-evenly gap-4 md:gap-7 lg:gap-10
+  }
+
+  .knob-style{
+    @apply rounded-full border-2 flex p-3 relative
+  }
+
+  .knob-text{
+    @apply text-center transition text-back-white text-sm font-light opacity-50
+  }
+
+  .knob-text-selected{
+    @apply text-center transition text-back-white text-sm font-light opacity-50 font-bold opacity-100
   }
 }

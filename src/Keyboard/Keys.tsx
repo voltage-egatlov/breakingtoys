@@ -15,40 +15,42 @@ const keyColorToClass = (keyColor: KeyColor): string => {
     }
 }
 
-const buildNoteLabel = (note?: Note.Note): string => {
-    if (note) {
-        return Note.getNote(note)
-    }
-    else {
-        return ""
-    }
-}
+// const buildNoteLabel = (note?: Note.Note): string => {
+//     if (note) {
+//         return Note.getNote(note)
+//     }
+//     else {
+//         return ""
+//     }
+// }
 
 type KeyProps = {
     color: KeyColor
-    note: Note.Note
+    note?: Note.Note
 }
 const Key: FC<KeyProps> = ({
     color,
     note,
 }) => {
     const keyColorClass = keyColorToClass(color)
-    const className = `${keyColorClass} flex justify-center justify-end`
-    const noteLabel = buildNoteLabel(note)
+    const className = `${keyColorClass} justify-center`
+    //const noteLabel = buildNoteLabel(note)
 
     const handleOnMouseDown = () => {
-        Synth.triggerNote(note)
+        if (note) { Synth.triggerNote(note) }
     }
     const handleOnMouseUp = () => {
         Synth.releaseNote()
     }
-
     return (
-        <button className={className} onMouseDown={handleOnMouseDown} onMouseUp={handleOnMouseUp}>
-            <p className="select-none self-end mb-5 text-2xl font-bold">
-                {noteLabel}
-            </p>
-        </button>
+        note ? (
+            <button className={className} onMouseDown={handleOnMouseDown} onMouseUp={handleOnMouseUp}>
+                <p className="select-none self-end text-center mb-5 text-xs font-bold">
+                </p>
+            </button>
+        ) :
+            <div className={`${className}`}></div>
     )
+
 }
 export default Key
