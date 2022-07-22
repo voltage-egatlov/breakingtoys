@@ -1,19 +1,10 @@
-import { useState } from "react"
-
-import Keyboard from "./Keyboard"
-import IntroScreen from "./IntroScreen"
+import KeyboardHandler from "./KeyboardHandler"
 
 function App() {
-  const [makingMusic, setMakingMusic] = useState(false)
-
   return (
     <div className="App">
       <header className="App-header">
-        {makingMusic ? (
-          <Keyboard />
-        ) : (
-          <IntroScreen setMakingMusic={setMakingMusic} />
-        )}
+        <KeyboardHandler />
       </header>
     </div>
   )
