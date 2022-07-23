@@ -1,12 +1,12 @@
 import * as Tone from "tone"
 import * as Note from "../model/note"
 
-const synth = new Tone.Synth().toDestination();
+const synth = new Tone.PolySynth(Tone.Synth).toDestination()
 
-export const triggerNote =(note:Note.Note):void =>{
-    synth.triggerAttack(Note.getNote(note))
+export const triggerNote = (note: Note.Note): void => {
+  synth.triggerAttack(Note.getNote(note), "+0")
 }
 
-export const releaseNote =(time?:string):void =>{
-    synth.triggerRelease()
+export const releaseNote = (note: Note.Note): void => {
+  synth.triggerRelease(Note.getNote(note))
 }

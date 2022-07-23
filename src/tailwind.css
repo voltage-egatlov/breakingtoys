@@ -13,11 +13,11 @@
     @apply h-40
   }
   .key-wh {
-    @apply box-border border-2 bg-white rounded-full flex key-shadow-small min-w-[40px] grow 
+    @apply box-border border-2 bg-white rounded-full flex min-w-[40px] grow shadow-key-small transition
   }
 
-  .key-bl {
-    @apply box-border border-2 bg-gray-600 rounded-full flex key-shadow-small min-w-[40px] grow
+  .key-bl { 
+    @apply box-border border-2 bg-gray-600 rounded-full flex min-w-[40px] grow shadow-key-small transition
   }
 
   .key-border{
@@ -28,13 +28,6 @@
     @apply box-border bg-transparent flex rounded-full min-w-[40px] grow
   }
 
-  .key-shadow-large{
-    @apply shadow-key transition hover:shadow-key-hover hover:translate-x-2 hover:translate-y-2
-  }
-
-  .key-shadow-small{
-    @apply shadow-key-small transition hover:shadow-key-hover-small hover:translate-x-1 hover:translate-y-1
-  }
   .key-container {
     @apply flex flex-row self-center justify-evenly gap-4 md:gap-7 lg:gap-10
   }
