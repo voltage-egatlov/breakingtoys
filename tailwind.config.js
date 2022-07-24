@@ -12,10 +12,10 @@ module.exports = {
         "spin-stopping": "spin infinite 2s ease-in-out",
       },
       boxShadow: {
-        'key': '10px 10px 15px 10px rgba(0, 0, 0, 0.3)',
-        'key-hover': '2px 2px 2px 5px rgba(0, 0, 0, 0.5)',
-        'key-small': '5px 5px 7px 5px rgba(0, 0, 0, 0.15)',
+        'key-small': '8px 8px 15px 15px rgba(0, 0, 0, 0.15)',
         'key-hover-small': '2px 2px 3px 3px rgba(0, 0, 0, 0.25)',
+        'box-inner': 'inset 8px 8px 15px 15px rgba(0, 0, 0, 0.25)',
+        'box-outer': '8px 8px 15px 15px rgba(0, 0, 0, 0.15)',
       },
       colors: {
         "icon-color": "#324261",
