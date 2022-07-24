@@ -4,10 +4,10 @@
 
 @layer components {
   .App{
-    @apply text-center
+    @apply text-center bg-back-blue flex justify-center
   }
   .App-header{
-    @apply bg-back-blue h-screen w-screen flex flex-col justify-center text-purple-200
+    @apply h-screen w-[80vw] flex flex-col justify-center text-purple-200 space-y-2 py-2
   }
   .App-spinner{
     @apply h-40

@@ -107,7 +107,7 @@ const KeyboardHandler: FC = () => {
 
   return (
     <div
-      className="justify-center self-center flex flex-col h-screen w-screen"
+      className="justify-center self-center flex flex-col h-[65vh] w-full bg-accent-purple p-8 rounded-[30px] shadow-box-inner border-4"
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}

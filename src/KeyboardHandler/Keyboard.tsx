@@ -17,7 +17,7 @@ const Keyboard: FC<KeyboardProps> = ({
   octaveShift,
 }) => {
   return (
-    <div className="self-center flex flex-col w-3/4 h-[75vh] gap-2 md:w-7/12 lg:w-2/4 lg:h-[50vh]">
+    <div className="self-center flex flex-col h-full w-full">
       <div id="blackKeysLeft" className="key-container w-7/8 h-1/2">
         <Key
           color="black"
