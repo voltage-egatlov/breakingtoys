@@ -18,7 +18,7 @@ export const getNoteShifted = (thisNote: Note, octave: number): Note => {
     return {
       noteLetter: thisNote.noteLetter,
       noteAccidental: thisNote.noteAccidental,
-      noteOctave: octave,
+      noteOctave: thisNote.noteOctave + octave,
       noteLength: thisNote.noteLength,
     }
   } else {
