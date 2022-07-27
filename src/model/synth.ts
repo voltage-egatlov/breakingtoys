@@ -10,3 +10,7 @@ export const triggerNote = (note: Note.Note): void => {
 export const releaseNote = (note: Note.Note): void => {
   synth.triggerRelease(Note.getNote(note))
 }
+
+export const releasAllNotes = (): void => {
+  synth.releaseAll()
+}

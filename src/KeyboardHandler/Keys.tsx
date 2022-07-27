@@ -18,7 +18,7 @@ type KeyProps = {
   indexPlaying: boolean[]
   setIndexPlaying: (idx: boolean[]) => void
   note: Note.Note
-  octaveShift: number
+  octave: number
 }
 
 const Key: FC<KeyProps> = ({
@@ -27,7 +27,7 @@ const Key: FC<KeyProps> = ({
   indexPlaying,
   setIndexPlaying,
   note,
-  octaveShift,
+  octave,
 }) => {
   const keyColorClass = keyColorToClass(color)
   const className = !indexPlaying[index]
@@ -38,13 +38,13 @@ const Key: FC<KeyProps> = ({
     const newArray = [...indexPlaying]
     newArray[index] = true
     setIndexPlaying(newArray)
-    Synth.triggerNote(Note.getNoteShifted(note, octaveShift))
+    Synth.triggerNote(Note.getNoteShifted(note, octave))
   }
   const handleOnMouseUp = () => {
     const newArray = [...indexPlaying]
     newArray[index] = false
     setIndexPlaying(newArray)
-    Synth.releaseNote(Note.getNoteShifted(note, octaveShift))
+    Synth.releaseNote(Note.getNoteShifted(note, octave))
   }
   return (
     <div

@@ -13,11 +13,11 @@
     @apply h-40
   }
   .key-wh {
-    @apply box-border border-2 bg-white rounded-full flex min-w-[40px] grow shadow-key-small transition
+    @apply box-border border-2 md:border-4 lg:border-8 bg-white rounded-full flex min-w-[40px] grow shadow-key-small transition
   }
 
   .key-bl { 
-    @apply box-border border-2 bg-gray-600 rounded-full flex min-w-[40px] grow shadow-key-small transition
+    @apply box-border border-2 md:border-4 lg:border-8 bg-gray-600 rounded-full flex min-w-[40px] grow shadow-key-small transition
   }
 
   .key-border{
@@ -29,7 +29,7 @@
   }
 
   .key-container {
-    @apply flex flex-row self-center justify-evenly gap-4 md:gap-7 lg:gap-10
+    @apply flex flex-row self-center justify-evenly space-x-4 md:space-x-7 lg:space-x-12
   }
 
   .knob-style{

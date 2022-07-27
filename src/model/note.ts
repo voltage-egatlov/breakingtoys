@@ -13,12 +13,12 @@ export const getNote = (thisNote: Note): string => {
   }
 }
 
-export const getNoteShifted = (thisNote: Note, octaves: number): Note => {
+export const getNoteShifted = (thisNote: Note, octave: number): Note => {
   if (thisNote !== null) {
     return {
       noteLetter: thisNote.noteLetter,
       noteAccidental: thisNote.noteAccidental,
-      noteOctave: thisNote.noteOctave + octaves,
+      noteOctave: octave,
       noteLength: thisNote.noteLength,
     }
   } else {

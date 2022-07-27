@@ -8,24 +8,24 @@ type KeyboardProps = {
   currentScale: Note.Note[]
   indexPlaying: boolean[]
   setIndexPlaying: (idx: boolean[]) => void
-  octaveShift: number
+  octave: number
 }
 const Keyboard: FC<KeyboardProps> = ({
   currentScale,
   indexPlaying,
   setIndexPlaying,
-  octaveShift,
+  octave,
 }) => {
   return (
     <div className="self-center flex flex-col h-full w-full">
-      <div id="blackKeysLeft" className="key-container w-7/8 h-1/2">
+      <div className="key-container w-7/8 h-1/2">
         <Key
           color="black"
           index={1}
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[1]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <Key
           color="black"
@@ -33,7 +33,7 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[3]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <div className="key-empty" />
         <Key
@@ -42,7 +42,7 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[6]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <Key
           color="black"
@@ -50,7 +50,7 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[8]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <Key
           color="black"
@@ -58,17 +58,17 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[10]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
       </div>
-      <div id="whiteKeysLeft" className="key-container w-full h-1/2">
+      <div className="key-container w-full h-1/2">
         <Key
           color="white"
           index={0}
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[0]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <Key
           color="white"
@@ -76,7 +76,7 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[2]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <Key
           color="white"
@@ -84,7 +84,7 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[4]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <Key
           color="white"
@@ -92,7 +92,7 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[5]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <Key
           color="white"
@@ -100,7 +100,7 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[7]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <Key
           color="white"
@@ -108,7 +108,7 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[9]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
         <Key
           color="white"
@@ -116,7 +116,7 @@ const Keyboard: FC<KeyboardProps> = ({
           indexPlaying={indexPlaying}
           setIndexPlaying={setIndexPlaying}
           note={currentScale[11]}
-          octaveShift={octaveShift}
+          octave={octave}
         ></Key>
       </div>
     </div>
