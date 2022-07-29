@@ -3,7 +3,7 @@ import knobSvg from "../Assets/Knob.svg"
 import ReactScrollWheelHandler from "react-scroll-wheel-handler"
 
 type KnobProps = {
-  selectableOptions: Array<string>
+  selectableOptions: Array<string> | Array<number>
   height: number
   label: string
   rotaryState: number
@@ -48,7 +48,7 @@ const Knob: FC<KnobProps> = ({
   return (
     <div className="flex flex-col relative pb-2">
       <h1
-        className="absolute lowercase text-back-white shadow-label-inset rounded-full px-1 self-center"
+        className="absolute lowercase text-back-white shadow-label-inset rounded-full px-1 self-center text-xs"
         style={labelStyle}
       >
         {label}

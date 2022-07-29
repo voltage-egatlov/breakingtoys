@@ -33,26 +33,86 @@ const SettingsTab: FC<SettingsTabProps> = ({
     "triangle",
   ]
 
+  const numericalOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  const [attackIndex, setAttackIndex] = useState(0)
+  const [releaseIndex, setReleaseIndex] = useState(0)
+  const [sustainIndex, setSustainIndex] = useState(5)
+  const [decayIndex, setDecayIndex] = useState(5)
+  const [volumeIndex, setVolumeIndex] = useState(5)
+  /* eslint-disable */
   useEffect(() => {
     synth.releaseAll()
     setSynth(
-      new Tone.PolySynth(Tone.Synth, {
+      synth.set({
+        envelope: {
+          attack: attackIndex / 10 + 0,
+          release: releaseIndex / 10 + 0.2,
+          sustain: sustainIndex / 10,
+          decay: decayIndex / 10,
+        },
         oscillator: {
           type: oscillators[oscillatorIndex],
+          volume: -30,
         },
-      }).toDestination(),
+        volume: volumeIndex * 3,
+      }),
     )
-  }, [oscillatorIndex]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [
+    oscillatorIndex,
+    attackIndex,
+    releaseIndex,
+    volumeIndex,
+    sustainIndex,
+    decayIndex,
+  ])
+  /* eslint-enable */
+
   return (
     <div className="top-tab-style gap-8">
       {isSettingsTabVisible && (
-        <div className="flex">
+        <div className="flex gap-4">
           <Knob
             selectableOptions={oscillators}
             height={15}
             label="Oscillator"
             rotaryState={oscillatorIndex}
             setRotaryState={setOscillatorIndex}
+          />
+          <Knob
+            selectableOptions={numericalOptions}
+            height={15}
+            label="Attack"
+            rotaryState={attackIndex}
+            setRotaryState={setAttackIndex}
+          />
+          <Knob
+            selectableOptions={numericalOptions}
+            height={15}
+            label="Release"
+            rotaryState={releaseIndex}
+            setRotaryState={setReleaseIndex}
+          />
+          <Knob
+            selectableOptions={numericalOptions}
+            height={15}
+            label="Sustain"
+            rotaryState={sustainIndex}
+            setRotaryState={setSustainIndex}
+          />
+          <Knob
+            selectableOptions={numericalOptions}
+            height={15}
+            label="Decay"
+            rotaryState={decayIndex}
+            setRotaryState={setDecayIndex}
+          />
+          <Knob
+            selectableOptions={numericalOptions}
+            height={15}
+            label="Volume"
+            rotaryState={volumeIndex}
+            setRotaryState={setVolumeIndex}
           />
         </div>
       )}
