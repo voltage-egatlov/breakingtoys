@@ -1,12 +1,10 @@
-import KeyboardHandler from "./KeyboardHandler"
-import TitleSlide from "./TitleSlide"
+import SynthHandler from "./SynthHandler"
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TitleSlide/>
-        <KeyboardHandler />
+        <SynthHandler />
       </header>
     </div>
   )

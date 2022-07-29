@@ -16,6 +16,9 @@ module.exports = {
         'key-hover-small': '2px 2px 3px 3px rgba(0, 0, 0, 0.25)',
         'box-inner': 'inset 8px 8px 15px 15px rgba(0, 0, 0, 0.25)',
         'box-outer': '8px 8px 15px 15px rgba(0, 0, 0, 0.15)',
+        'button': 'inset 3px 3px 3px 3px rgba(0, 0, 0, 0.4)',
+        'button-more': 'inset 4px 4px 4px 4px rgba(0, 0, 0, 0.4)',
+        'label-inset': 'inset 2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
       },
       colors: {
         "icon-color": "#324261",
@@ -26,7 +29,7 @@ module.exports = {
         "accent-purple": "#8F6593",
         "accent-green": "#84732B",
       },
-      flexBasis:{
+      flexBasis: {
         '1/7': '14.2857143%',
         '2/7': '28.5714286%',
         '3/7': '42.8571429%',
@@ -34,8 +37,10 @@ module.exports = {
         '5/7': '71.4285714%',
         '6/7': '85.7142857%',
       },
-      width:{
+      width: {
         '7/8': '87.5%',
+        '7/9': '77.7777778%',
+        '8/9': '86.75%',
       }
     },
   },

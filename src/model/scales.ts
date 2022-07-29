@@ -74,6 +74,12 @@ chromaticScale.push({
   noteOctave: 4,
   noteLength: "Whole",
 })
+chromaticScale.push({
+  noteLetter: "C",
+  noteAccidental: "",
+  noteOctave: 5,
+  noteLength: "Whole",
+})
 
 export const getScale = (
   keyName: "A" | "B" | "C" | "D" | "E" | "F" | "G",

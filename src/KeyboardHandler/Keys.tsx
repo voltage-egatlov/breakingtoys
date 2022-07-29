@@ -1,6 +1,7 @@
 import { FC } from "react"
 import * as Note from "../model/note"
 import * as Synth from "../model/synth"
+import * as Tone from "tone"
 type KeyColor = "black" | "white"
 
 const keyColorToClass = (keyColor: KeyColor): string => {
@@ -18,7 +19,8 @@ type KeyProps = {
   indexPlaying: boolean[]
   setIndexPlaying: (idx: boolean[]) => void
   note: Note.Note
-  octaveShift: number
+  octave: number
+  synth: Tone.PolySynth
 }
 
 const Key: FC<KeyProps> = ({
@@ -27,7 +29,8 @@ const Key: FC<KeyProps> = ({
   indexPlaying,
   setIndexPlaying,
   note,
-  octaveShift,
+  octave,
+  synth,
 }) => {
   const keyColorClass = keyColorToClass(color)
   const className = !indexPlaying[index]
@@ -38,13 +41,13 @@ const Key: FC<KeyProps> = ({
     const newArray = [...indexPlaying]
     newArray[index] = true
     setIndexPlaying(newArray)
-    Synth.triggerNote(Note.getNoteShifted(note, octaveShift))
+    Synth.triggerNote(Note.getNoteShifted(note, octave), synth)
   }
   const handleOnMouseUp = () => {
     const newArray = [...indexPlaying]
     newArray[index] = false
     setIndexPlaying(newArray)
-    Synth.releaseNote(Note.getNoteShifted(note, octaveShift))
+    Synth.releaseNote(Note.getNoteShifted(note, octave), synth)
   }
   return (
     <div

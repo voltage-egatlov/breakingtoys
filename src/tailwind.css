@@ -9,15 +9,13 @@
   .App-header{
     @apply h-screen w-[80vw] flex flex-col justify-center text-purple-200 space-y-2 py-2
   }
-  .App-spinner{
-    @apply h-40
-  }
+
   .key-wh {
-    @apply box-border border-2 bg-white rounded-full flex min-w-[40px] grow shadow-key-small transition
+    @apply box-border border-2 md:border-4 lg:border-8 bg-white rounded-full flex min-w-[40px] grow shadow-key-small transition
   }
 
   .key-bl { 
-    @apply box-border border-2 bg-gray-600 rounded-full flex min-w-[40px] grow shadow-key-small transition
+    @apply box-border border-2 md:border-4 lg:border-8 bg-gray-600 rounded-full flex min-w-[40px] grow shadow-key-small transition
   }
 
   .key-border{
@@ -29,7 +27,7 @@
   }
 
   .key-container {
-    @apply flex flex-row self-center justify-evenly gap-4 md:gap-7 lg:gap-10
+    @apply flex flex-row self-center justify-evenly space-x-4 md:space-x-7 lg:space-x-12
   }
 
   .knob-style{
@@ -42,5 +40,13 @@
 
   .knob-text-selected{
     @apply text-center transition text-back-white text-sm font-light opacity-50 font-bold opacity-100
+  }
+
+  .top-tab-style{
+    @apply bg-accent-pink rounded-[30px] p-4 border-4 flex flex-row justify-between shadow-box-outer items-center
+  }
+
+  .keyboard-box-style{
+    @apply transition justify-center self-center flex flex-row h-[65vh] w-full bg-accent-purple opacity-70 focus:bg-accent-purple focus:opacity-100 py-8 rounded-[30px] shadow-box-inner border-4
   }
 }
