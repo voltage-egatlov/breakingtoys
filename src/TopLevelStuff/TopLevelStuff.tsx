@@ -12,8 +12,8 @@ const TopLevelStuff: FC<TopLevelStuffProps> = ({ synth, setSynth }) => {
   const [isSettingsTabVisible, setIsSettingsTabVisible] = useState(false)
 
   return (
-    <div className="flex flex-row justify-between h-fit min-h-[15vh] gap-5">
-      <TitleSlide />
+    <div className="flex flex-row h-fit min-h-[15vh] gap-5 justify-between items-center">
+      <TitleSlide isSettingsVisible={isSettingsTabVisible} />
       <SettingsTab
         isSettingsTabVisible={isSettingsTabVisible}
         setIsSettingsTabVisible={setIsSettingsTabVisible}

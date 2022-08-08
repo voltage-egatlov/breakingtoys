@@ -164,6 +164,7 @@ const KeyboardHandler: FC<KeyboardHandlerProps> = ({ synth }) => {
     >
       <SolidIcons.ChevronLeftIcon
         className={octave < 0 ? octaveSwitchClassName : noOctaveSwitchClassName}
+        id="octave-switch-left"
       />
       <Keyboard
         currentScale={currentScale}
@@ -174,6 +175,7 @@ const KeyboardHandler: FC<KeyboardHandlerProps> = ({ synth }) => {
       />
       <SolidIcons.ChevronRightIcon
         className={octave > 0 ? octaveSwitchClassName : noOctaveSwitchClassName}
+        id="octave-switch-right"
       />
       {!keyboardFocused && (
         <div className="transition absolute self-center bg-black opacity-40 rounded-full shadow-box-outer">

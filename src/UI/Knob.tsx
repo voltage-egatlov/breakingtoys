@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import knobSvg from "../Assets/Knob.svg"
+import knobPng from "../Assets/Knob.png"
 import ReactScrollWheelHandler from "react-scroll-wheel-handler"
 
 type KnobProps = {
@@ -17,9 +17,13 @@ const Knob: FC<KnobProps> = ({
   setRotaryState,
 }) => {
   const numOptions = selectableOptions.length
+  const knobScalar = 3
   const knobStyle = {
     transform: `rotate(${(270 / (numOptions - 1)) * rotaryState + 136.5}deg)`,
-    height: `${height * 4.5}px`,
+    height: height * knobScalar,
+    width: height * knobScalar,
+    minWidth: height * knobScalar,
+    minHeight: height * knobScalar,
   }
 
   const handleOnClick = () => {
@@ -42,13 +46,13 @@ const Knob: FC<KnobProps> = ({
   }
 
   const labelStyle = {
-    transform: `translate(0px, ${height * 4.5}px)`,
+    transform: `translate(0px, ${height * 4}px)`,
   }
 
   return (
-    <div className="flex flex-col relative pb-2">
+    <div className="self-centerflex flex-col relative">
       <h1
-        className="absolute lowercase text-back-white shadow-label-inset rounded-full px-1 self-center text-xs"
+        className="lowercase border text-back-white shadow-label-inset rounded-full p-1 self-center text-xs select-none"
         style={labelStyle}
       >
         {label}
@@ -75,7 +79,7 @@ const Knob: FC<KnobProps> = ({
           }
           const trigTan = Math.tan((degree * Math.PI) / 180)
 
-          const z = height * 2
+          const z = height * 1.5
           const y =
             Math.sqrt(z ** 2 / (trigTan ** 2 + 1)) * (trigTan < 0 ? -1 : 1)
           const x = y * trigTan
@@ -93,7 +97,9 @@ const Knob: FC<KnobProps> = ({
             <div style={placeStyle} className="absolute w-full" key={index}>
               <p
                 style={textRotation}
-                className={isSelected ? `knob-text-selected` : `knob-text`}
+                className={`select-none ${
+                  isSelected ? `knob-text-selected select-` : `knob-text`
+                }`}
                 key={index}
               >
                 {option}
@@ -108,9 +114,9 @@ const Knob: FC<KnobProps> = ({
         >
           <img
             style={knobStyle}
-            src={knobSvg}
+            src={knobPng}
             draggable="false"
-            className={"transition duration-[400ms] ease-in-out"}
+            className={"transition duration-[400ms] ease-in-out select-none"}
             alt="knob"
             onClick={handleOnClick}
           />

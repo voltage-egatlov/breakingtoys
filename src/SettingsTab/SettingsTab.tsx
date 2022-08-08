@@ -1,7 +1,9 @@
 import { FC, useEffect, useState } from "react"
 import { CogIcon } from "@heroicons/react/outline"
 import { Knob } from "../UI"
+import { Switch } from "../UI"
 import * as Tone from "tone"
+import KnobPages from "./KnobPages"
 
 type SettingsTabProps = {
   isSettingsTabVisible: boolean
@@ -17,13 +19,16 @@ const SettingsTab: FC<SettingsTabProps> = ({
   setSynth,
 }) => {
   const settingButtonClassName =
-    "transition duration-700 h-8 md:h-14 lg:h-16 text-back-blue"
-  const settingsButtonClassNamePressed = settingButtonClassName + " -rotate-90"
+    "transition ease-in duration-300 h-8 md:h-14 lg:h-16 text-back-white"
+  const settingsButtonClassNamePressed =
+    settingButtonClassName + " -rotate-90 text-back-blue"
 
   const handleOnClickSettingsButton = () => {
     setIsSettingsTabVisible(!isSettingsTabVisible)
   }
-  const [oscillatorIndex, setOscillatorIndex] = useState(0)
+
+  const [currentPage, setCurrentPage] = useState(1)
+
   type NonCustomOscillatorType = Exclude<OscillatorType, "custom">
 
   const oscillators: NonCustomOscillatorType[] = [
@@ -32,13 +37,15 @@ const SettingsTab: FC<SettingsTabProps> = ({
     "square",
     "triangle",
   ]
-
   const numericalOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const knobWidth = 20
 
+  const [oscillatorIndex, setOscillatorIndex] = useState(0)
   const [attackIndex, setAttackIndex] = useState(0)
   const [releaseIndex, setReleaseIndex] = useState(0)
   const [sustainIndex, setSustainIndex] = useState(5)
   const [decayIndex, setDecayIndex] = useState(5)
+  const [chorusOn, setChorusOn] = useState(false)
   const [volumeIndex, setVolumeIndex] = useState(5)
   /* eslint-disable */
   useEffect(() => {
@@ -69,55 +76,93 @@ const SettingsTab: FC<SettingsTabProps> = ({
   /* eslint-enable */
 
   return (
-    <div className="top-tab-style gap-8">
+    <div className="top-tab-style gap-4 place-self-end p-2 h-full">
       {isSettingsTabVisible && (
-        <div className="flex gap-4">
-          <Knob
-            selectableOptions={oscillators}
-            height={15}
-            label="Oscillator"
-            rotaryState={oscillatorIndex}
-            setRotaryState={setOscillatorIndex}
-          />
-          <Knob
-            selectableOptions={numericalOptions}
-            height={15}
-            label="Attack"
-            rotaryState={attackIndex}
-            setRotaryState={setAttackIndex}
-          />
-          <Knob
-            selectableOptions={numericalOptions}
-            height={15}
-            label="Release"
-            rotaryState={releaseIndex}
-            setRotaryState={setReleaseIndex}
-          />
-          <Knob
-            selectableOptions={numericalOptions}
-            height={15}
-            label="Sustain"
-            rotaryState={sustainIndex}
-            setRotaryState={setSustainIndex}
-          />
-          <Knob
-            selectableOptions={numericalOptions}
-            height={15}
-            label="Decay"
-            rotaryState={decayIndex}
-            setRotaryState={setDecayIndex}
-          />
-          <Knob
-            selectableOptions={numericalOptions}
-            height={15}
-            label="Volume"
-            rotaryState={volumeIndex}
-            setRotaryState={setVolumeIndex}
-          />
+        <div className="flex">
+          <KnobPages
+            pageLabel="Oscillator Settings"
+            pageNumber={currentPage}
+            setPageNumber={setCurrentPage}
+            index={0}
+            firstPage
+          >
+            <Knob
+              selectableOptions={["sin", "saw", "sqr", "tri"]}
+              height={knobWidth}
+              label="Oscillator"
+              rotaryState={oscillatorIndex}
+              setRotaryState={setOscillatorIndex}
+            />
+          </KnobPages>
+          <KnobPages
+            pageLabel="Envelope Settings"
+            pageNumber={currentPage}
+            setPageNumber={setCurrentPage}
+            index={1}
+          >
+            <Knob
+              selectableOptions={numericalOptions}
+              height={knobWidth}
+              label="Attack"
+              rotaryState={attackIndex}
+              setRotaryState={setAttackIndex}
+            />
+            <Knob
+              selectableOptions={numericalOptions}
+              height={knobWidth}
+              label="Release"
+              rotaryState={releaseIndex}
+              setRotaryState={setReleaseIndex}
+            />
+            <Knob
+              selectableOptions={numericalOptions}
+              height={knobWidth}
+              label="Sustain"
+              rotaryState={sustainIndex}
+              setRotaryState={setSustainIndex}
+            />
+            <Knob
+              selectableOptions={numericalOptions}
+              height={knobWidth}
+              label="Decay"
+              rotaryState={decayIndex}
+              setRotaryState={setDecayIndex}
+            />
+          </KnobPages>
+          <KnobPages
+            pageLabel="Effects Settings"
+            pageNumber={currentPage}
+            setPageNumber={setCurrentPage}
+            index={2}
+          >
+            <Switch
+              label="Chorus"
+              switchState={chorusOn}
+              setSwitchState={setChorusOn}
+              isLinked={false}
+            />
+          </KnobPages>
+          <KnobPages
+            pageLabel="Volume Settings"
+            pageNumber={currentPage}
+            setPageNumber={setCurrentPage}
+            index={3}
+            lastPage
+          >
+            <Knob
+              selectableOptions={numericalOptions}
+              height={knobWidth}
+              label="Volume"
+              rotaryState={volumeIndex}
+              setRotaryState={setVolumeIndex}
+            />
+          </KnobPages>
         </div>
       )}
       <div
-        className={`transition self-center bg-back-white rounded-full border-4 border-gray-300`}
+        className={`transition duration-300 ease-in bg-back-blue rounded-full border-4 border-gray-300 ${
+          isSettingsTabVisible ? "bg-back-white shadow-settings" : ""
+        }`}
       >
         <CogIcon
           className={

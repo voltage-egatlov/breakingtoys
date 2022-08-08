@@ -11,11 +11,11 @@
   }
 
   .key-wh {
-    @apply box-border border-2 md:border-4 lg:border-8 bg-white rounded-full flex min-w-[40px] grow shadow-key-small transition
+    @apply box-border border-2 md:border-4 lg:border-8 bg-white rounded-full flex min-w-[10px] md:min-w-[40px] grow shadow-key-small transition duration-100
   }
 
   .key-bl { 
-    @apply box-border border-2 md:border-4 lg:border-8 bg-gray-600 rounded-full flex min-w-[40px] grow shadow-key-small transition
+    @apply box-border border-2 md:border-4 lg:border-8 bg-gray-600 rounded-full flex min-w-[10px] md:min-w-[40px] grow shadow-key-small transition duration-100
   }
 
   .key-border{
@@ -49,4 +49,9 @@
   .keyboard-box-style{
     @apply transition justify-center self-center flex flex-row h-[65vh] w-full bg-accent-purple opacity-70 focus:bg-accent-purple focus:opacity-100 py-8 rounded-[30px] shadow-box-inner border-4
   }
+  
+  .text-size{
+    @apply text-lg md:text-2xl lg:text-6xl
+  }
+  
 }

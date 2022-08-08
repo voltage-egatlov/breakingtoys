@@ -19,6 +19,9 @@ module.exports = {
         'button': 'inset 3px 3px 3px 3px rgba(0, 0, 0, 0.4)',
         'button-more': 'inset 4px 4px 4px 4px rgba(0, 0, 0, 0.4)',
         'label-inset': 'inset 2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
+        'chevron': '2px 2px 1px 1px rgba(0, 0, 0, 0.2)',
+        'chevron-pressed': '2px 2px 0px 0px rgba(0, 0, 0, 0.2)',
+        'settings': 'inset 3px 3px 1px 3px rgba(0, 0, 0, 0.4)',
       },
       colors: {
         "icon-color": "#324261",
