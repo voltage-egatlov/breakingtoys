@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from "react"
 import { CogIcon } from "@heroicons/react/outline"
-import { Knob } from "../UI"
-import { Switch } from "../UI"
+import { Knob } from "../../UI"
+import { Switch } from "../../UI"
 import * as Tone from "tone"
+import * as Effects from "../../model/effects"
 import KnobPages from "./KnobPages"
 
 type SettingsTabProps = {
@@ -45,8 +46,14 @@ const SettingsTab: FC<SettingsTabProps> = ({
   const [releaseIndex, setReleaseIndex] = useState(0)
   const [sustainIndex, setSustainIndex] = useState(5)
   const [decayIndex, setDecayIndex] = useState(5)
+  const [volumeIndex, setVolumeIndex] = useState(3)
+
   const [chorusOn, setChorusOn] = useState(false)
-  const [volumeIndex, setVolumeIndex] = useState(5)
+  const [reverbOn, setReverbOn] = useState(false)
+  const [delayOn, setDelayOn] = useState(false)
+  const [distortionOn, setDistortionOn] = useState(false)
+  const [phaserOn, setPhaserOn] = useState(false)
+
   /* eslint-disable */
   useEffect(() => {
     synth.releaseAll()
@@ -73,6 +80,18 @@ const SettingsTab: FC<SettingsTabProps> = ({
     sustainIndex,
     decayIndex,
   ])
+  useEffect(() => {
+    synth.releaseAll()
+
+    chorusOn ? Effects.setChorusOn() : Effects.setChorusOff()
+    reverbOn ? Effects.setReverbOn() : Effects.setReverbOff()
+    delayOn ? Effects.setDelayOn() : Effects.setDelayOff()
+    distortionOn ? Effects.setDistortionOn() : Effects.setDistortionOff()
+    phaserOn ? Effects.setPhaserOn() : Effects.setPhaserOff()
+
+    Effects.updateEffects(synth)
+  }, [chorusOn, reverbOn, delayOn, distortionOn, phaserOn])
+
   /* eslint-enable */
 
   return (
@@ -135,6 +154,30 @@ const SettingsTab: FC<SettingsTabProps> = ({
             setPageNumber={setCurrentPage}
             index={2}
           >
+            <Switch
+              label="Phaser"
+              switchState={phaserOn}
+              setSwitchState={setPhaserOn}
+              isLinked={false}
+            />
+            <Switch
+              label="Delay"
+              switchState={delayOn}
+              setSwitchState={setDelayOn}
+              isLinked={false}
+            />
+            <Switch
+              label="Distortion"
+              switchState={distortionOn}
+              setSwitchState={setDistortionOn}
+              isLinked={false}
+            />
+            <Switch
+              label="Reverb"
+              switchState={reverbOn}
+              setSwitchState={setReverbOn}
+              isLinked={false}
+            />
             <Switch
               label="Chorus"
               switchState={chorusOn}
