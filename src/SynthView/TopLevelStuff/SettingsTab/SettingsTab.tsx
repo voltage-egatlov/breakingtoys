@@ -1,14 +1,15 @@
 import { FC, useEffect, useState } from "react"
 import { CogIcon } from "@heroicons/react/outline"
-import { Knob } from "../../UI"
-import { Switch } from "../../UI"
+import { Knob } from "../../../UI"
+import { Switch } from "../../../UI"
 import * as Tone from "tone"
-import * as Effects from "../../model/effects"
-import KnobPages from "./KnobPages"
+import * as Effects from "../../../model/effects"
+import KnobPages from "../KnobPages"
 
 type SettingsTabProps = {
   isSettingsTabVisible: boolean
   setIsSettingsTabVisible: (isSettingsTabVisible: boolean) => void
+  setIsArpeggiatorTabVisible: (isArpeggiatorTabVisible: boolean) => void
   synth: Tone.PolySynth
   setSynth: (synth: Tone.PolySynth) => void
 }
@@ -16,6 +17,7 @@ type SettingsTabProps = {
 const SettingsTab: FC<SettingsTabProps> = ({
   isSettingsTabVisible,
   setIsSettingsTabVisible,
+  setIsArpeggiatorTabVisible,
   synth,
   setSynth,
 }) => {
@@ -26,6 +28,7 @@ const SettingsTab: FC<SettingsTabProps> = ({
 
   const handleOnClickSettingsButton = () => {
     setIsSettingsTabVisible(!isSettingsTabVisible)
+    setIsArpeggiatorTabVisible(false)
   }
 
   const [currentPage, setCurrentPage] = useState(1)

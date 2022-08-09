@@ -1,12 +1,10 @@
 import React, { FC, useState } from "react"
 
-import * as SolidIcons from "@heroicons/react/solid"
+import * as Note from "../../../model/note"
+import * as Synth from "../../../model/synth"
+import * as Scale from "../../../model/scales"
 
-import * as Scale from "../model/scales"
-import * as Note from "../model/note"
-import * as Synth from "../model/synth"
-
-import Keyboard from "./Keyboard"
+import Keyboard from "../Keyboard/Keyboard"
 import * as Tone from "tone"
 
 const keyCodetoKeyIndex = (keyCode: string): number => {
@@ -68,36 +66,16 @@ const keyCodeToOctave = (keyCode: string): number => {
   }
 }
 
-const octaveToOpacity = (octave: number): string => {
-  switch (octave) {
-    case -4:
-      return "opacity-100 text-sky-500"
-    case -3:
-      return "opacity-80 text-sky-400"
-    case -2:
-      return "opacity-60 text-sky-300"
-    case -1:
-      return "opacity-50 text-sky-200"
-    case 0:
-      return "opacity-30 text-sky-100"
-    case 1:
-      return "opacity-50 text-sky-200"
-    case 2:
-      return "opacity-60 text-sky-300"
-    case 3:
-      return "opacity-80 text-sky-400"
-    case 4:
-      return "opacity-100 text-sky-500"
-    default:
-      return "opacity-30 text-sky-100"
-  }
-}
-
 type KeyboardHandlerProps = {
   synth: Tone.PolySynth
+  octave: number
+  setOctave: (octave: number) => void
 }
-const KeyboardHandler: FC<KeyboardHandlerProps> = ({ synth }) => {
-  const [octave, setOctave] = useState(0)
+const KeyboardHandler: FC<KeyboardHandlerProps> = ({
+  synth,
+  octave,
+  setOctave,
+}) => {
   const currentScale = Scale.getScale("A", "major")
 
   const [indexPlaying, setIndexPlaying] = useState([
@@ -148,42 +126,16 @@ const KeyboardHandler: FC<KeyboardHandlerProps> = ({ synth }) => {
       handleEndNote(currentScale[currIndex], octave, synth)
     }
   }
-  const noOctaveSwitchClassName =
-    "transition self-center h-12 md:h-24 lg:h-32 opacity-30 text-sky-100"
-  const octaveSwitchClassName =
-    "transition self-center h-12 md:h-24 lg:h-32 " + octaveToOpacity(octave)
-  const [keyboardFocused, setKeyboardFocused] = useState(false)
-
   return (
-    <div
-      className="keyboard-box-style"
-      tabIndex={0}
-      onKeyDown={handleKeyDown}
-      onKeyUp={handleKeyUp}
-      onFocus={() => setKeyboardFocused(true)}
-    >
-      <SolidIcons.ChevronLeftIcon
-        className={octave < 0 ? octaveSwitchClassName : noOctaveSwitchClassName}
-        id="octave-switch-left"
-      />
+    <div tabIndex={0} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>
       <Keyboard
         currentScale={currentScale}
         indexPlaying={indexPlaying}
         setIndexPlaying={setIndexPlaying}
         octave={octave}
+        setOctave={setOctave}
         synth={synth}
       />
-      <SolidIcons.ChevronRightIcon
-        className={octave > 0 ? octaveSwitchClassName : noOctaveSwitchClassName}
-        id="octave-switch-right"
-      />
-      {!keyboardFocused && (
-        <div className="transition absolute self-center bg-black opacity-40 rounded-full shadow-box-outer">
-          <p className="text-6xl text-white opacity-100 p-10">
-            Click Here to Play
-          </p>
-        </div>
-      )}
     </div>
   )
 }

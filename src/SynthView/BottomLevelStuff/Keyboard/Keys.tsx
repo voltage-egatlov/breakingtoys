@@ -1,6 +1,6 @@
 import { FC } from "react"
-import * as Note from "../model/note"
-import * as Synth from "../model/synth"
+import * as Note from "../../../model/note"
+import * as Synth from "../../../model/synth"
 import * as Tone from "tone"
 type KeyColor = "black" | "white"
 
@@ -21,6 +21,7 @@ type KeyProps = {
   note: Note.Note
   octave: number
   synth: Tone.PolySynth
+  isArpKey?: boolean
 }
 
 const Key: FC<KeyProps> = ({
@@ -31,10 +32,12 @@ const Key: FC<KeyProps> = ({
   note,
   octave,
   synth,
+  isArpKey,
 }) => {
   const keyColorClass = keyColorToClass(color)
+  const opacityModifier = isArpKey ? "opacity-50" : "opacity-100"
   const className = !indexPlaying[index]
-    ? `${keyColorClass} justify-center`
+    ? `${keyColorClass} justify-center ` + opacityModifier
     : `${keyColorClass} justify-center shadow-key-hover-small translate-x-1 translate-y-1`
 
   const handleOnMouseDown = () => {
