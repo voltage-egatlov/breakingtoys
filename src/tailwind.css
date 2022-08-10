@@ -47,7 +47,7 @@
   }
 
   .keyboard-box-style{
-    @apply transition justify-center self-center flex flex-row h-[65vh] w-full bg-accent-purple opacity-70 focus:bg-accent-purple focus:opacity-100 py-8 rounded-[30px] shadow-box-inner border-4
+    @apply transition justify-center self-center flex flex-row h-[65vh] w-full bg-accent-purple opacity-100 py-8 rounded-[30px] shadow-box-inner border-4
   }
   
   .text-size{
