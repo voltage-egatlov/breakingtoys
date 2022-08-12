@@ -44,16 +44,25 @@ type ArpeggioHandlerProps = {
   synth: Tone.PolySynth
   octave: number
   setOctave: (octave: number) => void
+  arpOctaves: number
+  setArpOctaves: (arpOctaves: number) => void
+  arpDirection: string
+  isArpeggiatorPlaying: boolean
+  setIsArpeggiatorPlaying: (isArpeggioPlaying: boolean) => void
 }
 const ArpeggioHandler: FC<ArpeggioHandlerProps> = ({
   synth,
   octave,
   setOctave,
+  arpOctaves,
+  setArpOctaves,
+  arpDirection,
+  isArpeggiatorPlaying,
+  setIsArpeggiatorPlaying,
 }) => {
   const currentScale = Scale.getScale("A", "major")
 
   const [notesPlaying, setNotesPlaying] = useState<Note[]>([])
-  const [isArpeggiatorOn, setIsArpeggiatorOn] = useState(false)
   const [isSetNotesOn, setIsSetNotesOn] = useState(false)
 
   const blankIndexPlaying = [
@@ -92,14 +101,14 @@ const ArpeggioHandler: FC<ArpeggioHandlerProps> = ({
     const keyIndex = keyCodetoKeyIndex(event.code)
     if (event.code === "Space") {
       setIsSetNotesOn(false)
-      if (isArpeggiatorOn) {
-        setIsArpeggiatorOn(false)
+      if (isArpeggiatorPlaying) {
+        setIsArpeggiatorPlaying(false)
         setIndexPlaying(blankIndexPlaying)
         setNotesPlaying([])
         Arpeggio.stopArpeggio()
-      } else if (!isArpeggiatorOn && notesPlaying.length !== 0) {
-        setIsArpeggiatorOn(true)
-        Arpeggio.arpeggio(notesPlaying, synth)
+      } else if (!isArpeggiatorPlaying && notesPlaying.length !== 0) {
+        setIsArpeggiatorPlaying(true)
+        Arpeggio.arpeggio(notesPlaying, synth, arpOctaves, arpDirection)
       }
     }
 

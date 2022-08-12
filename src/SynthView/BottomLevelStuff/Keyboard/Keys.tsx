@@ -41,16 +41,20 @@ const Key: FC<KeyProps> = ({
     : `${keyColorClass} justify-center shadow-key-hover-small translate-x-1 translate-y-1`
 
   const handleOnMouseDown = () => {
-    const newArray = [...indexPlaying]
-    newArray[index] = true
-    setIndexPlaying(newArray)
-    Synth.triggerNote(Note.getNoteShifted(note, octave), synth)
+    if (!isArpKey) {
+      const newArray = [...indexPlaying]
+      newArray[index] = true
+      setIndexPlaying(newArray)
+      Synth.triggerNote(Note.getNoteShifted(note, octave), synth)
+    }
   }
   const handleOnMouseUp = () => {
-    const newArray = [...indexPlaying]
-    newArray[index] = false
-    setIndexPlaying(newArray)
-    Synth.releaseNote(Note.getNoteShifted(note, octave), synth)
+    if (!isArpKey) {
+      const newArray = [...indexPlaying]
+      newArray[index] = false
+      setIndexPlaying(newArray)
+      Synth.releaseNote(Note.getNoteShifted(note, octave), synth)
+    }
   }
   return (
     <div
