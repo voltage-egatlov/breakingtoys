@@ -8,6 +8,7 @@ type KnobProps = {
   label: string
   rotaryState: number
   setRotaryState: (state: number) => void
+  disabled?: boolean
 }
 const Knob: FC<KnobProps> = ({
   selectableOptions,
@@ -15,6 +16,7 @@ const Knob: FC<KnobProps> = ({
   label,
   rotaryState,
   setRotaryState,
+  disabled = false,
 }) => {
   const numOptions = selectableOptions.length
   const knobScalar = 3
@@ -35,12 +37,12 @@ const Knob: FC<KnobProps> = ({
   }
 
   const rotateCW = () => {
-    if (rotaryState < numOptions - 1) {
+    if (rotaryState < numOptions - 1 && !disabled) {
       setRotaryState(rotaryState + 1)
     }
   }
   const rotateCCW = () => {
-    if (rotaryState > 0) {
+    if (rotaryState > 0 && !disabled) {
       setRotaryState(rotaryState - 1)
     }
   }
@@ -50,7 +52,7 @@ const Knob: FC<KnobProps> = ({
   }
 
   return (
-    <div className="self-centerflex flex-col relative">
+    <div className="self-center flex flex-col relative -translate-y-5">
       <h1
         className="lowercase border text-back-white shadow-label-inset rounded-full p-1 self-center text-xs select-none"
         style={labelStyle}
@@ -116,7 +118,10 @@ const Knob: FC<KnobProps> = ({
             style={knobStyle}
             src={knobPng}
             draggable="false"
-            className={"transition duration-[400ms] ease-in-out select-none"}
+            className={
+              "transition duration-[400ms] ease-in-out select-none " +
+              (disabled ? "opacity-25" : "opacity-100")
+            }
             alt="knob"
             onClick={handleOnClick}
           />

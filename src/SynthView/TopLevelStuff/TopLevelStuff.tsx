@@ -9,6 +9,11 @@ type TopLevelStuffProps = {
   setSynth: (synth: Tone.PolySynth) => void
   isArpeggiatorOn: boolean
   setIsArpeggiatorOn: (isArpeggiatorOn: boolean) => void
+  arpOctaves: number
+  setArpOctaves: (arpOctaves: number) => void
+  arpDirection: string
+  setArpDirection: (arpDirection: string) => void
+  isArpeggiatorPlaying: boolean
 }
 
 const TopLevelStuff: FC<TopLevelStuffProps> = ({
@@ -16,6 +21,11 @@ const TopLevelStuff: FC<TopLevelStuffProps> = ({
   setSynth,
   isArpeggiatorOn,
   setIsArpeggiatorOn,
+  arpOctaves,
+  setArpOctaves,
+  arpDirection,
+  setArpDirection,
+  isArpeggiatorPlaying,
 }) => {
   const [isSettingsTabVisible, setIsSettingsTabVisible] = useState(false)
   const [isArpeggiatorTabVisible, setIsArpeggiatorTabVisible] = useState(false)
@@ -34,6 +44,11 @@ const TopLevelStuff: FC<TopLevelStuffProps> = ({
           setIsSettingsTabVisible={setIsSettingsTabVisible}
           isArpeggiatorOn={isArpeggiatorOn}
           setIsArpeggiatorOn={setIsArpeggiatorOn}
+          arpOctaves={arpOctaves}
+          setArpOctaves={setArpOctaves}
+          arpDirection={arpDirection}
+          setArpDirection={setArpDirection}
+          isArpeggiatorPlaying={isArpeggiatorPlaying}
         />
         <SettingsTab
           isSettingsTabVisible={isSettingsTabVisible}

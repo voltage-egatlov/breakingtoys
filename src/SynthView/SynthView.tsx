@@ -14,6 +14,10 @@ const SynthView: FC = () => {
   const [isArpeggiatorOn, setIsArpeggiatorOn] = useState(false)
   const [octave, setOctave] = useState(0)
 
+  const [arpOctaves, setArpOctaves] = useState(1)
+  const [arpDirection, setArpDirection] = useState("up")
+  const [isArpeggiatorPlaying, setIsArpeggiatorPlaying] = useState(false)
+
   if (!isArpeggiatorOn) {
     Arpeggio.stopArpeggio()
   }
@@ -25,9 +29,23 @@ const SynthView: FC = () => {
         setSynth={setSynth}
         isArpeggiatorOn={isArpeggiatorOn}
         setIsArpeggiatorOn={setIsArpeggiatorOn}
+        arpOctaves={arpOctaves}
+        setArpOctaves={setArpOctaves}
+        arpDirection={arpDirection}
+        setArpDirection={setArpDirection}
+        isArpeggiatorPlaying={isArpeggiatorPlaying}
       />
       {isArpeggiatorOn ? (
-        <ArpeggioHandler synth={synth} octave={octave} setOctave={setOctave} />
+        <ArpeggioHandler
+          synth={synth}
+          octave={octave}
+          setOctave={setOctave}
+          arpOctaves={arpOctaves}
+          setArpOctaves={setArpOctaves}
+          arpDirection={arpDirection}
+          isArpeggiatorPlaying={isArpeggiatorPlaying}
+          setIsArpeggiatorPlaying={setIsArpeggiatorPlaying}
+        />
       ) : (
         <KeyboardHandler synth={synth} octave={octave} setOctave={setOctave} />
       )}
