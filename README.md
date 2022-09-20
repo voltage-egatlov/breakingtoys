@@ -1,6 +1,6 @@
 # This is a keyboard
 
-Use the bottom charachter keys, or click to play.
+Use the bottom character keys, or click to play.
 
 ## Available Scripts
 
